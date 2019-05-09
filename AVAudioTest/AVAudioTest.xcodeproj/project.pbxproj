@@ -119,7 +119,7 @@
 				TargetAttributes = {
 					0AEB04D222818482005EF8EB = {
 						CreatedOnToolsVersion = 9.0.1;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -301,16 +301,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 24LG5QVBPR;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = ELNKAU5W5R;
 				INFOPLIST_FILE = AVAudioTest/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.zm.AVAudioTest;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ZTE.AVAudioTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "ca50aafa-5ad3-4b78-ac80-8ddaf396dafc";
+				PROVISIONING_PROFILE_SPECIFIER = zteDev;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -319,16 +318,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 24LG5QVBPR;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = ELNKAU5W5R;
 				INFOPLIST_FILE = AVAudioTest/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.zm.AVAudioTest;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ZTE.AVAudioTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "ca50aafa-5ad3-4b78-ac80-8ddaf396dafc";
+				PROVISIONING_PROFILE_SPECIFIER = zteDev;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

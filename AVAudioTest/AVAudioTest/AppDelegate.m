@@ -78,13 +78,13 @@
         
         if([dic[AVAudioSessionInterruptionTypeKey] integerValue] == AVAudioSessionInterruptionTypeBegan)
         {
-           //[self.player pause];
+            [self.player pause];
         }
         else if([dic[AVAudioSessionInterruptionTypeKey] integerValue] == AVAudioSessionInterruptionTypeEnded)
         {
-//            [[AVAudioSession sharedInstance] setActive:YES error:nil];
-//            [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
-            //[self.player play];
+            [[AVAudioSession sharedInstance] setActive:YES error:nil];
+            [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
+            [self.player play];
         }
         
         NSLog(@"AVAudioSessionInterruptionNotification: [%@]",dic);

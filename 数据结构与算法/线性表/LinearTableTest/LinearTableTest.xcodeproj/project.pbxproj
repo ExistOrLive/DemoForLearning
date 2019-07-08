@@ -7,13 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		743E31B222CE5E560010782B /* String.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 743E31B022CE5E560010782B /* String.cpp */; };
 		7453538D22CDA0FB00224C58 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7453538C22CDA0FB00224C58 /* main.cpp */; };
 		7453539922CDA13900224C58 /* ArrayLinearTable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7453539422CDA13800224C58 /* ArrayLinearTable.cpp */; };
 		7453539A22CDA13900224C58 /* LinkedLinearTable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7453539722CDA13800224C58 /* LinkedLinearTable.cpp */; };
 		745353A222CDA15000224C58 /* ArrayStack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7453539C22CDA14F00224C58 /* ArrayStack.cpp */; };
 		745353A322CDA15000224C58 /* LinkedStack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7453539F22CDA15000224C58 /* LinkedStack.cpp */; };
-		745353A422CDA15000224C58 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 745353A022CDA15000224C58 /* main.cpp */; };
-		745353AC22CDA16300224C58 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 745353A622CDA16300224C58 /* main.cpp */; };
 		745353AD22CDA16300224C58 /* LinkedQueue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 745353A922CDA16300224C58 /* LinkedQueue.cpp */; };
 		745353AE22CDA16300224C58 /* ArrayQueue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 745353AB22CDA16300224C58 /* ArrayQueue.cpp */; };
 /* End PBXBuildFile section */
@@ -31,6 +30,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		743E31B022CE5E560010782B /* String.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = String.cpp; sourceTree = "<group>"; };
+		743E31B122CE5E560010782B /* String.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = String.hpp; sourceTree = "<group>"; };
 		7453538922CDA0FB00224C58 /* LinearTableTest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = LinearTableTest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7453538C22CDA0FB00224C58 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		7453539422CDA13800224C58 /* ArrayLinearTable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ArrayLinearTable.cpp; sourceTree = "<group>"; };
@@ -42,9 +43,7 @@
 		7453539D22CDA14F00224C58 /* LinkedStack.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LinkedStack.hpp; sourceTree = "<group>"; };
 		7453539E22CDA14F00224C58 /* ArrayStack.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ArrayStack.hpp; sourceTree = "<group>"; };
 		7453539F22CDA15000224C58 /* LinkedStack.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LinkedStack.cpp; sourceTree = "<group>"; };
-		745353A022CDA15000224C58 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		745353A122CDA15000224C58 /* StackHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StackHeader.h; sourceTree = "<group>"; };
-		745353A622CDA16300224C58 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		745353A722CDA16300224C58 /* AbstractQueueHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractQueueHeader.h; sourceTree = "<group>"; };
 		745353A822CDA16300224C58 /* ArrayQueue.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ArrayQueue.hpp; sourceTree = "<group>"; };
 		745353A922CDA16300224C58 /* LinkedQueue.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LinkedQueue.cpp; sourceTree = "<group>"; };
@@ -63,6 +62,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		743E31AF22CE5E210010782B /* String */ = {
+			isa = PBXGroup;
+			children = (
+				743E31B022CE5E560010782B /* String.cpp */,
+				743E31B122CE5E560010782B /* String.hpp */,
+			);
+			path = String;
+			sourceTree = "<group>";
+		};
 		7453538022CDA0FB00224C58 = {
 			isa = PBXGroup;
 			children = (
@@ -82,6 +90,7 @@
 		7453538B22CDA0FB00224C58 /* LinearTableTest */ = {
 			isa = PBXGroup;
 			children = (
+				743E31AF22CE5E210010782B /* String */,
 				745353A522CDA15600224C58 /* Queue */,
 				7453539B22CDA14000224C58 /* Stack */,
 				7453539322CDA10200224C58 /* LinearTable */,
@@ -109,7 +118,6 @@
 				7453539E22CDA14F00224C58 /* ArrayStack.hpp */,
 				7453539F22CDA15000224C58 /* LinkedStack.cpp */,
 				7453539D22CDA14F00224C58 /* LinkedStack.hpp */,
-				745353A022CDA15000224C58 /* main.cpp */,
 				745353A122CDA15000224C58 /* StackHeader.h */,
 			);
 			path = Stack;
@@ -123,7 +131,6 @@
 				745353A822CDA16300224C58 /* ArrayQueue.hpp */,
 				745353A922CDA16300224C58 /* LinkedQueue.cpp */,
 				745353AA22CDA16300224C58 /* LinkedQueue.hpp */,
-				745353A622CDA16300224C58 /* main.cpp */,
 			);
 			path = Queue;
 			sourceTree = "<group>";
@@ -186,10 +193,9 @@
 			files = (
 				745353A322CDA15000224C58 /* LinkedStack.cpp in Sources */,
 				745353A222CDA15000224C58 /* ArrayStack.cpp in Sources */,
-				745353A422CDA15000224C58 /* main.cpp in Sources */,
+				743E31B222CE5E560010782B /* String.cpp in Sources */,
 				7453539A22CDA13900224C58 /* LinkedLinearTable.cpp in Sources */,
 				745353AD22CDA16300224C58 /* LinkedQueue.cpp in Sources */,
-				745353AC22CDA16300224C58 /* main.cpp in Sources */,
 				745353AE22CDA16300224C58 /* ArrayQueue.cpp in Sources */,
 				7453538D22CDA0FB00224C58 /* main.cpp in Sources */,
 				7453539922CDA13900224C58 /* ArrayLinearTable.cpp in Sources */,

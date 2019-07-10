@@ -71,7 +71,7 @@ namespace zm {
             DLRTraverseNode(node->rightNode,visit);
         }
         
-        // 中序遍历 一次循环
+        // 后序遍历 一次循环
         void LRDTraverseNode(BinaryTreeNode<T> * node,void(*visit)(T&))
         {
             if(node == NULL)
@@ -140,6 +140,35 @@ namespace zm {
         
 #pragma mark - 遍历 循环迭代 利用栈来实现，递归实际上就是栈
         
+        /**
+         *  二叉树前序，中序，后序遍历的循环实现都是依靠栈做的
+         *  首先不考虑visit方法的位置，其实就是将遍历到的节点压入栈中，然后再出栈
+         *  先对从根节点开始，将左节点一个个入栈；
+         *直到左节点为空，出栈一个节点，对该节点的右节点入栈
+         **/
+        
+        void commonTraverse()
+        {
+            LinkedStack<BinaryTreeNode<T> *> stack;
+            BinaryTreeNode<T> * rootNode = this->rootNode;
+            
+            while(rootNode != NULL || stack.length() > 0)
+            {
+                if(rootNode != NULL)
+                {
+                    stack.push(rootNode);
+                    rootNode = rootNode ->leftNode;
+                }
+                else
+                {
+                    BinaryTreeNode<T> * tmpNode = NULL;
+                    stack.pop(tmpNode);
+                    rootNode = tmpNode ->rightNode;
+                }
+            }
+        }
+        
+        
         // 前序遍历 迭代 循环 (利用栈来实现，递归实际上就是栈)
         void DLRTraverse1(void(*visit)(T&))
         {
@@ -148,15 +177,18 @@ namespace zm {
             BinaryTreeNode<T> * rootNode = this->rootNode;
             while(rootNode != NULL || stack.length() > 0)
             {
-                // 将从根节点开始的所有左子树的左节点入栈
-                while (rootNode != NULL) {
-                    visit(rootNode->value);           // 在入栈之前，先访问j节点的值
+                if(rootNode != NULL)
+                {
+                    visit(rootNode->value);        // 在入栈前访问(从父节点到该节点时)
                     stack.push(rootNode);
-                    rootNode = rootNode->leftNode;
+                    rootNode = rootNode ->leftNode;
                 }
-                
-                stack.pop(rootNode);
-                rootNode = rootNode->rightNode;
+                else
+                {
+                    BinaryTreeNode<T> * tmpNode = NULL;
+                    stack.pop(tmpNode);
+                    rootNode = tmpNode ->rightNode;
+                }
             }
             
         }
@@ -170,15 +202,18 @@ namespace zm {
             
             while(rootNode != NULL || stack.length() > 0)
             {
-                while (rootNode != NULL) {
+                if(rootNode != NULL)
+                {
                     stack.push(rootNode);
                     rootNode = rootNode->leftNode;
                 }
-                
-                BinaryTreeNode<T> * tmpNode = NULL;
-                stack.pop(tmpNode);
-                visit(tmpNode->value);
-                rootNode = tmpNode->rightNode;
+                else
+                {
+                    BinaryTreeNode<T> * tmpNode = NULL;
+                    stack.pop(tmpNode);
+                    visit(tmpNode->value);            //出栈时访问(从左节点回来时访问)
+                    rootNode = tmpNode ->rightNode;
+                }
             }
             
         }
@@ -195,26 +230,30 @@ namespace zm {
             
             while(rootNode != NULL || stack.length() > 0)
             {
-                // 将从根节点开始的所有左子树的左节点入栈
-                while (rootNode != NULL) {
+                if(rootNode != NULL)
+                {
                     stack.push(rootNode);
                     rootNode = rootNode->leftNode;
                 }
-                
-                BinaryTreeNode<T> * tmpNode = NULL;
-                stack.getTop(tmpNode);
-                
-                // 如果栈顶节点的右子树已经遍历，就直接访问
-                if(nodesForVisted.locateElem(tmpNode, NULL) != -1)
-                {
-                    stack.pop(tmpNode);
-                    visit(tmpNode->value);
-                }
                 else
                 {
-                     // 如果栈顶节点的右子树没有遍历，需要右子树入栈
+                    BinaryTreeNode<T> * tmpNode = NULL;
+                    stack.pop(tmpNode);
                     rootNode = tmpNode->rightNode;
-                    nodesForVisted.insertElem(tmpNode, 0);
+                    
+                    if(nodesForVisted.locateElem(tmpNode, NULL) != -1)
+                    {
+                        //第二次出栈时访问(从右节点回来时访问)
+                        visit(tmpNode->value);
+                        rootNode = NULL;         // 置为0
+                        
+                    }
+                    else
+                    {
+                        // 如果第一次出栈说明右节点没有访问，需要先回栈,并记录下来
+                        stack.push(tmpNode);
+                        nodesForVisted.insertElem(tmpNode, 0);
+                    }
                 }
             }
             

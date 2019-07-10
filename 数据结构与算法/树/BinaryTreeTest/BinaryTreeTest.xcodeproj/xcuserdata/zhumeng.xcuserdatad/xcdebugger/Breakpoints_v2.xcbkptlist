@@ -10,11 +10,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BinaryTreeTest/BinaryTree.hpp"
-            timestampString = "584258498.105139"
+            timestampString = "584418722.769483"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "180"
-            endingLineNumber = "180"
+            startingLineNumber = "247"
+            endingLineNumber = "247"
+            landmarkName = "LRDTraverse1(void(*visit)(T&amp;))"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BinaryTreeTest/BinaryTree.hpp"
+            timestampString = "584418722.770014"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "253"
+            endingLineNumber = "253"
             landmarkName = "LRDTraverse1(void(*visit)(T&amp;))"
             landmarkType = "7">
          </BreakpointContent>

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		747D8DB422D2D4ED00BC9AC5 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 747D8DB322D2D4ED00BC9AC5 /* main.cpp */; };
 		747D8DBC22D2D57400BC9AC5 /* BinaryTree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 747D8DBA22D2D57400BC9AC5 /* BinaryTree.cpp */; };
+		74DACAA122EDE64800747067 /* ThreadedBinaryTree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74DACA9F22EDE64800747067 /* ThreadedBinaryTree.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -43,6 +44,8 @@
 		747D8DE222D310AA00BC9AC5 /* ArrayQueue.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ArrayQueue.hpp; sourceTree = "<group>"; };
 		747D8DE322D310AA00BC9AC5 /* AbstractQueueHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AbstractQueueHeader.h; sourceTree = "<group>"; };
 		747D8DE422D310AA00BC9AC5 /* LinkedQueue.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = LinkedQueue.cpp; sourceTree = "<group>"; };
+		74DACA9F22EDE64800747067 /* ThreadedBinaryTree.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ThreadedBinaryTree.cpp; sourceTree = "<group>"; };
+		74DACAA022EDE64800747067 /* ThreadedBinaryTree.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ThreadedBinaryTree.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +84,8 @@
 				747D8DB322D2D4ED00BC9AC5 /* main.cpp */,
 				747D8DBA22D2D57400BC9AC5 /* BinaryTree.cpp */,
 				747D8DBB22D2D57400BC9AC5 /* BinaryTree.hpp */,
+				74DACA9F22EDE64800747067 /* ThreadedBinaryTree.cpp */,
+				74DACAA022EDE64800747067 /* ThreadedBinaryTree.hpp */,
 			);
 			path = BinaryTreeTest;
 			sourceTree = "<group>";
@@ -177,6 +182,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				74DACAA122EDE64800747067 /* ThreadedBinaryTree.cpp in Sources */,
 				747D8DBC22D2D57400BC9AC5 /* BinaryTree.cpp in Sources */,
 				747D8DB422D2D4ED00BC9AC5 /* main.cpp in Sources */,
 			);

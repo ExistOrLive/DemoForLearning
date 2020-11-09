@@ -1,0 +1,108 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/zhumeng/Library/Mobile Documents/com~apple~CloudDocs/个人电脑/开发/github/DemoForLearning/简单的文件数据库/SimpleFileDB/SimpleDB.h
+stdio.h
+-
+iostream
+-
+string
+-
+vector
+-
+fstream
+-
+map
+-
+btree.h
+/Users/zhumeng/Library/Mobile Documents/com~apple~CloudDocs/个人电脑/开发/github/DemoForLearning/简单的文件数据库/SimpleFileDB/btree.h
+
+/Users/zhumeng/Library/Mobile Documents/com~apple~CloudDocs/个人电脑/开发/github/DemoForLearning/简单的文件数据库/SimpleFileDB/btree.h
+cstdint
+-
+cstdlib
+-
+cstring
+-
+limits
+-
+new
+-
+phmap_fwd_decl.h
+/Users/zhumeng/Library/Mobile Documents/com~apple~CloudDocs/个人电脑/开发/github/DemoForLearning/简单的文件数据库/SimpleFileDB/phmap_fwd_decl.h
+phmap_base.h
+/Users/zhumeng/Library/Mobile Documents/com~apple~CloudDocs/个人电脑/开发/github/DemoForLearning/简单的文件数据库/SimpleFileDB/phmap_base.h
+string_view
+-
+
+/Users/zhumeng/Library/Mobile Documents/com~apple~CloudDocs/个人电脑/开发/github/DemoForLearning/简单的文件数据库/SimpleFileDB/main.cpp
+iostream
+-
+SimpleDB.h
+/Users/zhumeng/Library/Mobile Documents/com~apple~CloudDocs/个人电脑/开发/github/DemoForLearning/简单的文件数据库/SimpleFileDB/SimpleDB.h
+
+/Users/zhumeng/Library/Mobile Documents/com~apple~CloudDocs/个人电脑/开发/github/DemoForLearning/简单的文件数据库/SimpleFileDB/phmap_base.h
+algorithm
+-
+cassert
+-
+cstddef
+-
+initializer_list
+-
+iterator
+-
+string
+-
+type_traits
+-
+utility
+-
+functional
+-
+tuple
+-
+utility
+-
+memory
+-
+mutex
+-
+phmap_config.h
+/Users/zhumeng/Library/Mobile Documents/com~apple~CloudDocs/个人电脑/开发/github/DemoForLearning/简单的文件数据库/SimpleFileDB/phmap_config.h
+shared_mutex
+-
+optional
+-
+sanitizer/asan_interface.h
+-
+cxxabi.h
+-
+
+/Users/zhumeng/Library/Mobile Documents/com~apple~CloudDocs/个人电脑/开发/github/DemoForLearning/简单的文件数据库/SimpleFileDB/phmap_config.h
+limits.h
+-
+cstddef
+-
+Availability.h
+-
+TargetConditionals.h
+-
+android/ndk-version.h
+-
+emmintrin.h
+-
+tmmintrin.h
+-
+
+/Users/zhumeng/Library/Mobile Documents/com~apple~CloudDocs/个人电脑/开发/github/DemoForLearning/简单的文件数据库/SimpleFileDB/phmap_fwd_decl.h
+memory
+-
+utility
+-
+

@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/zhumeng/Library/Mobile Documents/com~apple~CloudDocs/个人电脑/开发/github/DemoForLearning/TestDemo/CPPTest1/main.cpp
+iostream
+-
+string
+-
+vector
+-
+

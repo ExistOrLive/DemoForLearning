@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/Users/zhumeng/Library/Mobile Documents/com~apple~CloudDocs/个人电脑/开发/github/DemoForLearning/CertificationOAuth/CertificationOAuth/build",
+  "command": "/usr/bin/clang++  -I\"/Users/zhumeng/Library/Mobile Documents/com~apple~CloudDocs/个人电脑/开发/github/DemoForLearning/CertificationOAuth/CertificationOAuth/include\" -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -std=c++17 -o CMakeFiles/CertificationOAuth.dir/main.cpp.o -c \"/Users/zhumeng/Library/Mobile Documents/com~apple~CloudDocs/个人电脑/开发/github/DemoForLearning/CertificationOAuth/CertificationOAuth/main.cpp\"",
+  "file": "/Users/zhumeng/Library/Mobile Documents/com~apple~CloudDocs/个人电脑/开发/github/DemoForLearning/CertificationOAuth/CertificationOAuth/main.cpp"
+}
+]

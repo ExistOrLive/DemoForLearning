@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/Users/zhumeng/Library/Mobile Documents/com~apple~CloudDocs/个人电脑/开发/github/DemoForLearning/简单的文件数据库/SimpleFileDB/build",
+  "command": "/usr/bin/clang++   -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -o CMakeFiles/SimpleDB.dir/main.cpp.o -c \"/Users/zhumeng/Library/Mobile Documents/com~apple~CloudDocs/个人电脑/开发/github/DemoForLearning/简单的文件数据库/SimpleFileDB/main.cpp\"",
+  "file": "/Users/zhumeng/Library/Mobile Documents/com~apple~CloudDocs/个人电脑/开发/github/DemoForLearning/简单的文件数据库/SimpleFileDB/main.cpp"
+}
+]

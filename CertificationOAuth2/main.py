@@ -394,8 +394,6 @@ if __name__ == "__main__":
         for cerIndex in range(len(result[1])):
             outWorksheet.write(index, 2 + cerIndex, result[1][cerIndex])
 
-        print(result[1])
-
         if result[0] == True:
             successCount += 1
         else:

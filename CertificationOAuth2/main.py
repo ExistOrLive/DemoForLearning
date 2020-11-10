@@ -2,14 +2,15 @@
 
 import time
 from html.parser import HTMLParser
-
 import requests
 import xlrd
 import xlwt
 import math
+import pytesseract
+from PIL import Image
 
-userAgent = ["Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36",
-      "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2227.1 Safari/537.36",
+userAgent = ["Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2227.1 Safari/537.36",
+      "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36",
       "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2227.0 Safari/537.36",
       "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2227.0 Safari/537.36",
       "Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2226.0 Safari/537.36",
@@ -196,6 +197,166 @@ class MyHTMLParser(HTMLParser):
                 self.certicationInfos.append(self.tmpStr)
                 self.tmpStr = ''
 
+class MyHTMLParser1(HTMLParser):
+
+    def __init__(self):
+        HTMLParser.__init__(self)
+        self.req = ''
+        self.reqIP = ''
+
+    def handle_starttag(self, tag, attrs):
+        if tag == 'input':
+            if ('name','req') in attrs:
+                for tmp in attrs:
+                    if tmp[0] == 'value':
+                        self.req = tmp[1]
+            elif ('name','reqIP') in attrs:
+                for tmp in attrs:
+                    if tmp[0] == 'value':
+                        self.reqIP = tmp[1]
+
+
+
+def requestAndAnalyseVerifyCode(cookies,index):
+    print("解析验证码：")
+    url = 'http://zscx.osta.org.cn/jiandingApp/verifycode'
+    header = {'Referer': 'http://zscx.osta.org.cn/jiandingApp/command/buzhongxin/ecCertSearchAllq',
+              'User-Agent': userAgent[index % len(userAgent)],
+              'Accept': 'image/avif,image/webp,image/apng,image/*,*/*;q=0.8',
+              'Accept-Encoding': 'gzip, deflate',
+              'Accept-Language':'zh-CN,zh;q=0.9,en;q=0.8'}
+    result = requests.get(url,headers=header,cookies=cookies)
+    if result.status_code == 200:
+        open('verifycode.jpg','wb').write(result.content)
+        img = Image.open("verifycode.jpg")
+        result = pytesseract.image_to_string(img)
+        result = ''.join(result.split())
+        return result
+    else:
+        return "false"
+
+
+
+def sendRealRequest(cardId,name,index,hasVerifyCode,verfifyCode,cookies,req,reqIP):
+
+    if hasVerifyCode:
+        url = 'http://zscx.osta.org.cn/jiandingApp/command/buzhongxin/ecCertSearchAllq'
+        header = {'Referer': 'http://zscx.osta.org.cn/',
+                  'Origin': 'http://zscx.osta.org.cn',
+                  'Content-Type': 'application/x-www-form-urlencoded',
+                  'User-Agent': userAgent[index % len(userAgent)],
+                  'Accept': '*/*',
+                  'Cache_Control': 'no-cache'}
+        params = {'req':req,
+                  'reqIP':reqIP,
+                  'templetId':'',
+                  'async':False,
+                  'PortID':'',
+                  'tableName': 'CERT_T',
+                  'tableName1': '000000',
+                  'CertificateID': '',
+                  'CID': cardId,
+                  'Name': name,
+                  'x': '137',
+                  'y': '24',
+                  'province': '-1',
+                  'verifyCode':verfifyCode,
+                  'imageField.x':33,
+                  'imageField.y':12}
+
+    else:
+        url = 'http://zscx.osta.org.cn/jiandingApp/command/buzhongxin/ecCertSearchAll'
+        header = {'Referer': 'http://zscx.osta.org.cn/',
+                  'Origin': 'http://zscx.osta.org.cn',
+                  'Content-Type': 'application/x-www-form-urlencoded',
+                  'User-Agent': userAgent[index % len(userAgent)],
+                  'Accept': '*/*',
+                  'Cache_Control': 'no-cache'}
+        params = {'tableName': 'CERT_T',
+                  'tableName1': '000000',
+                  'CertificateID': '',
+                  'CID': cardId,
+                  'Name': name,
+                  'x': '137',
+                  'y': '24',
+                  'province': '-1'}
+
+    try:
+        if hasVerifyCode:
+            result = requests.post(url, data=params, headers=header,cookies=cookies,timeout=60)
+        else:
+            result = requests.post(url, data=params, headers=header,timeout=60)
+    except Exception:
+        return (False,"")
+    else:
+        if result.status_code == 200:
+            return (True, result)
+        else:
+            return (False, result)
+
+
+def sendRequest(cardId,name,index):
+    repeatCount = 0
+    hasVerify = False
+    verifyCode = ""
+    cookies = {}
+    req = ''
+    reqIP = ''
+
+    while(True):
+
+        if repeatCount > 3:
+            print("重试4次，仍然失败，结束重试")
+            return (False,["查询失败"])
+
+        print("\n")
+
+        time.sleep(math.pow(3,repeatCount))
+
+        print("查询：")
+
+        resultTuple = sendRealRequest(cardId=cardId,name=name,index=index,hasVerifyCode=hasVerify,verfifyCode=verifyCode,cookies=cookies,req=req,reqIP=reqIP)
+
+        if resultTuple[0] == True:
+            result = resultTuple[1]
+            if result.text.find("证书信息") != -1:
+                parser = MyHTMLParser()
+                parser.feed(data=result.text)
+                print(parser.certicationInfos)
+                return (True,parser.certicationInfos)
+            elif result.text.find("对不起，没有查到相关信息") != -1:
+                print("没有证书")
+                return (True, ["没有证书"])
+            elif result.text.find("请输入验证码") != -1:
+                print("需要输入验证码")
+                tmpcookies = requests.utils.dict_from_cookiejar(result.cookies)
+                if len(tmpcookies) > 0:
+                    cookies = tmpcookies
+                parser = MyHTMLParser1()
+                parser.feed(data=result.text)
+                req = parser.req
+                reqIP = parser.reqIP
+                verifyCode = requestAndAnalyseVerifyCode(cookies,index)
+                repeatCount += 1
+                if "false" == verifyCode:
+                    print("验证码解析失败，等待重试")
+                else:
+                    print("验证码解析成功:"+verifyCode)
+                    hasVerify = True
+                    verifyCode = verifyCode
+            else:
+                hasVerify = False
+                print("查询失败，等待重试")
+                repeatCount += 1
+        else:
+            hasVerify = False
+            print("查询失败，等待重试")
+            repeatCount += 1
+
+
+
+
+
 
 if __name__ == "__main__":
 
@@ -221,78 +382,28 @@ if __name__ == "__main__":
 
     for index in range(worksheet.nrows):
 
-        repeatCount = 0
+        print("\n")
+        cardId = worksheet.cell(index, 0).value
+        name = worksheet.cell(index, 1).value
+        print(cardId + " " + name)
 
-        while (True):
+        result = sendRequest(cardId,name,index)
 
-            print("\n")
+        outWorksheet.write(index, 0, cardId)
+        outWorksheet.write(index, 1, name)
+        for cerIndex in range(len(result[1])):
+            outWorksheet.write(index, 2 + cerIndex, result[1][cerIndex])
 
-            time.sleep(math.pow(3,repeatCount))
+        print(result[1])
 
-            cardId = worksheet.cell(index, 0).value
-            name = worksheet.cell(index, 1).value
+        if result[0] == True:
+            successCount += 1
+        else:
+            failedCount += 1
 
-            print(cardId + " " + name)
-
-            url = 'http://zscx.osta.org.cn/jiandingApp/command/buzhongxin/ecCertSearchAll'
-
-            header = {'Referer': 'http://zscx.osta.org.cn/',
-                      'Origin': 'http://zscx.osta.org.cn',
-                      'Content-Type': 'application/x-www-form-urlencoded',
-                      'User-Agent': userAgent[index % len(userAgent)],
-                      'Accept': '*/*',
-                      'Cache_Control': 'no-cache'}
-            params = {'tableName': 'CERT_T',
-                      'tableName1': '000000',
-                      'CertificateID': '',
-                      'CID': cardId,
-                      'Name': name,
-                      'x': '137',
-                      'y': '24',
-                      'province': '-1'}
-            try:
-                result = requests.post(url, data=params, headers=header, timeout=30)
-            except Exception:
-                repeatCount += 1
-                print("查询失败，等待重试")
-            else:
-                if result.status_code == 200:
-                    if result.text.find("证书信息") != -1:
-                        successCount += 1
-                        parser = MyHTMLParser()
-                        parser.feed(data=result.text)
-                        outWorksheet.write(index, 0, cardId)
-                        outWorksheet.write(index, 1, name)
-                        for cerIndex in range(len(parser.certicationInfos)):
-                            outWorksheet.write(index, 2 + cerIndex, parser.certicationInfos[cerIndex])
-                        print(parser.certicationInfos)
-                        repeatCount = 0
-                        break
-                    elif result.text.find("对不起，没有查到相关信息") != -1:
-                        successCount += 1
-                        outWorksheet.write(index, 0, cardId)
-                        outWorksheet.write(index, 1, name)
-                        outWorksheet.write(index, 2, "没有证书")
-                        print("没有证书")
-                        repeatCount = 0
-                        break
-                    else:
-                        repeatCount += 1
-                        print("查询失败，等待重试")
-                else:
-                    repeatCount += 1
-                    print("查询失败，等待重试")
-
-            if repeatCount >= 3:
-                failedCount += 1
-                outWorksheet.write(index, 0, cardId)
-                outWorksheet.write(index, 1, name)
-                outWorksheet.write(index, 2, "查询失败")
-                print("重试3次，仍然失败，结束重试")
-                break
 
     outWorkBook.save("result.xlsx")
 
     endTime = time.time()
 
-    print("查询结束，共查询"+str(worksheet.nrows)+"条记录，成功"+str(successCount)+"条，失败"+str(failedCount)+"条，用时"+str(endTime - timeStart)+"秒" )
+    print("\n\n查询结束，共查询"+str(worksheet.nrows)+"条记录，成功"+str(successCount)+"条，失败"+str(failedCount)+"条，用时"+str(endTime - timeStart)+"秒" )

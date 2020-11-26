@@ -17,43 +17,41 @@ private:
 public:
     virtual void test1(){
         std::cout << "this is A test1";
-    }
-    
-    void test2(){
-        std::cout << "this is A test2";
-    }
-    
-    static void test3(){
-        std::cout << "this is A test3";
-    }
-    
-    
-    
+    }    
 };
 
 
-class B : private  A{
+class B :  public A{
 private:
     
 public:
-    void test1()  {
-        std::cout << "this is B";
-    }
-    
-    void test2()  {
-        A::test3();
+    int result = 11;
+
+    void test1() override final{
+        this->A::test1();
         std::cout << "this is B";
     }
 };
+
+
+class C : public B{
+private:
+    
+public:
+
+    void test1(){
+        this->A::test1();
+        std::cout << "this is B";
+    }
+};
+
 
 
 int main(int argc, const char * argv[]) {
     // insert code here...
-    
-    string a = "Hello World";
+    B b;
 
-    std::cout << a << endl;
+    b.test1();
 
-    a.append("dasd");
     return 0;
 }

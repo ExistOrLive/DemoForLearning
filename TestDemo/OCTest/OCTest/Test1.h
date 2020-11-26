@@ -14,6 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, strong) NSString *a;
 @property(nonatomic, assign) int b;
 
+- (void) test;
+
 @end
 
 @interface Test2 : Test1

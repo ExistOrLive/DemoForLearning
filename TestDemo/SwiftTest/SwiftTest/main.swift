@@ -7,16 +7,16 @@
 
 import Foundation
 
+enum Beverage: CaseIterable {
+    case coffee, tea, juice
+}
+let numberOfChoices = Beverage.allCases.count
+print("\(numberOfChoices) beverages available")
 
-var array1  = [1,2,3]
 
-array1.s
-
-
-
-
-print("\(array1),\(array1.contains(2))")
-
+for tmpcase in Beverage.allCases {
+    print(tmpcase)
+}
 
 
 

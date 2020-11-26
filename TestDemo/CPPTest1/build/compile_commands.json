@@ -1,7 +1,7 @@
 [
 {
   "directory": "/Users/zhumeng/Library/Mobile Documents/com~apple~CloudDocs/个人电脑/开发/github/DemoForLearning/TestDemo/CPPTest1/build",
-  "command": "/usr/bin/clang++   -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -o CMakeFiles/CPPTest1.dir/main.cpp.o -c \"/Users/zhumeng/Library/Mobile Documents/com~apple~CloudDocs/个人电脑/开发/github/DemoForLearning/TestDemo/CPPTest1/main.cpp\"",
+  "command": "/usr/bin/clang++   -g -o CMakeFiles/CPPTest1.dir/main.cpp.o -c \"/Users/zhumeng/Library/Mobile Documents/com~apple~CloudDocs/个人电脑/开发/github/DemoForLearning/TestDemo/CPPTest1/main.cpp\"",
   "file": "/Users/zhumeng/Library/Mobile Documents/com~apple~CloudDocs/个人电脑/开发/github/DemoForLearning/TestDemo/CPPTest1/main.cpp"
 }
 ]

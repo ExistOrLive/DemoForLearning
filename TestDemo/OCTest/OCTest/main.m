@@ -9,19 +9,20 @@
 #import "Test1.h"
 
 
-
-
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        Test2 *test = [Test2 new];
-        test.a = @"hahah";
-        test.b = 12;
+        int a = 1;
+        void(^function)(void);
         
-        Test1 *ts = test;
-        ts.a = @"dadas";
-        ts.b = 133;
+        function = ^{
+            ++a;
+            NSLog(@"%d\n",a);
+        };
         
-        NSLog(@"%@",test);
+        
+        function();
+        function();
+        
     }
     return 0;
 }

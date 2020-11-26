@@ -6,51 +6,25 @@
 //
 
 #include <iostream>
+#include "Test.hpp"
 
 using namespace std;
 
-class A{
-private:
-    
-public:
-    virtual void test1(){
-        std::cout << "this is A test1";
-    }
-    
-    void test2(){
-        std::cout << "this is A test2";
-    }
-    
-    static void test3(){
-        std::cout << "this is A test3";
-    }
-    
-    
-    
-};
-
-
-class B : private  A{
-private:
-    
-public:
-    void test1()  {
-        std::cout << "this is B";
-    }
-    
-    void test2()  {
-        A::test3();
-        std::cout << "this is B";
-    }
-};
-
-
 int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
     
+    int a = 1;
     
-    B b;
+    auto function = [a]() mutable -> void {
+        a++;
+        cout << a << endl;
+    };
     
+    auto func1 = function;
+    
+    function();
+    function();
+    func1();
+    cout << a << endl;
+
     return 0;
 }

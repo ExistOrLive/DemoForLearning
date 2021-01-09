@@ -10,21 +10,34 @@
 
 using namespace std;
 
+class SuperClass{
+ 
+public:
+    SuperClass(){
+        test();
+    }
+    
+    virtual ~SuperClass(){
+        test();
+    }
+
+    virtual void test(){
+        cout << "SuperClass";
+    }
+};
+
+class SubClass : public SuperClass{
+public:
+    void test() override{
+        SuperClass::test();
+        cout << "SubClass";
+    }
+};
+
+
 int main(int argc, const char * argv[]) {
     
-    int a = 1;
-    
-    auto function = [a]() mutable -> void {
-        a++;
-        cout << a << endl;
-    };
-    
-    auto func1 = function;
-    
-    function();
-    function();
-    func1();
-    cout << a << endl;
-
+    SuperClass *a = new SubClass();
+    a->test();
     return 0;
 }

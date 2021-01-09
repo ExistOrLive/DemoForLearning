@@ -7,16 +7,14 @@
 
 import Foundation
 
-enum Beverage: CaseIterable {
-    case coffee, tea, juice
-}
-let numberOfChoices = Beverage.allCases.count
-print("\(numberOfChoices) beverages available")
+let url = URL(string: "https://www.github.com/existorlive/githubclient")
 
+print(url?.host)
+print(url?.relativePath)
+print(url?.baseURL)
+print(url?.path)
+print(url?.pathComponents)
 
-for tmpcase in Beverage.allCases {
-    print(tmpcase)
-}
 
 
 

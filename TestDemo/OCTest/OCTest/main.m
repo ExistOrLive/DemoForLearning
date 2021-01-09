@@ -11,18 +11,10 @@
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        int a = 1;
-        void(^function)(void);
+   
+        Test1 * test = [Test1 new];
         
-        function = ^{
-            ++a;
-            NSLog(@"%d\n",a);
-        };
-        
-        
-        function();
-        function();
-        
+        NSLog(@"");
     }
     return 0;
 }

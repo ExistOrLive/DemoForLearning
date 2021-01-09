@@ -10,15 +10,23 @@
 @implementation Test1
 
 - (instancetype) init {
+    if(self = [super init]){
+        [self test];
+    }
     return self;
+}
+
+- (void) test{
+    NSLog(@"%@",self.a);
 }
 
 @end
 
-@implementation Test2
 
-- (instancetype) init {
-    return self;
+@implementation Test1(ahah)
+
+- (void) test{
+    NSLog(@"Hello World");
 }
 
 @end

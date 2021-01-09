@@ -14,16 +14,15 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, strong) NSString *a;
 @property(nonatomic, assign) int b;
 
-- (void) test;
+@end
+
+
+@interface Test1(ahah)
+
+
 
 @end
 
-@interface Test2 : Test1
-
-@property(nonatomic, strong) NSString *a;
-@property(nonatomic, assign) int b;
-
-@end
 
 
 NS_ASSUME_NONNULL_END

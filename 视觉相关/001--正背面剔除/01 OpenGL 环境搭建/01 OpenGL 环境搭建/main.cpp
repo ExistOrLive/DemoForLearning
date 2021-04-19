@@ -63,6 +63,7 @@ void RenderScene()
     //参数2：模型视图矩阵
     //参数3：投影矩阵
     //参数4：基本颜色值
+   // shaderManager.UseStockShader(GLT_SHADER_FLAT,transformPipeline.GetModelViewProjectionMatrix(),vRed);
     shaderManager.UseStockShader(GLT_SHADER_DEFAULT_LIGHT, transformPipeline.GetModelViewMatrix(), transformPipeline.GetProjectionMatrix(), vRed);
     
     //5.绘制

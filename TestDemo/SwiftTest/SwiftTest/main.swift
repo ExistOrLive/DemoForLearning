@@ -7,13 +7,9 @@
 
 import Foundation
 
-let url = URL(string: "https://www.github.com/existorlive/githubclient")
+var str: String? = "dasda"
 
-print(url?.host)
-print(url?.relativePath)
-print(url?.baseURL)
-print(url?.path)
-print(url?.pathComponents)
+print(str is String)
 
 
 
